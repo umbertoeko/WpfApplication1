@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="463.32" Width="621.107">
+        <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0">
+                <Button Click="DrawShape"  Tag="0">
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="Resources/layer-shape-ellipse.png"  Grid.Column="0" Stretch="None"></Image>
+                        <Label  Grid.Column="1">Circle</Label>
+                    </Grid>
+                </Button>
+                <Button Click="DrawShape"  Tag="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/layer-shape.png" Stretch="None"></Image>
+                        <Label Margin="10,0,0,0">Rectangle</Label>
+                    </StackPanel>
+                    </Button>
+                <Button Click="DrawShape"  Tag="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/layer-shape-triangle.png"></Image>
+                        <Label Margin="10,0,0,0">Triangle</Label>
+                    </StackPanel>
+                </Button>
+                <Button Click="DrawShape"  Tag="3">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/layer-shape-text.png"></Image>
+                        <Label Margin="10,0,0,0">Text</Label>
+                    </StackPanel>
+                </Button>
+                <Button Click="DrawShape"  Tag="4">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/image.png"></Image>
+                        <Label Margin="10,0,0,0">Image</Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
+            <DockPanel  Grid.Column="2">
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Click="ClearCanvas" Grid.Column="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Resources/eraser.png" Stretch="None"></Image>
+                            <Label Margin="2,0,0,0">ClearAll</Label>
+
+                        </StackPanel>
+                    </Button>
+                    <local:ScrollableToolBox x:Name="shapesBar" Grid.Column="1" Margin="5,0,0,0"></local:ScrollableToolBox>
+                </Grid>
+                <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="mainCanvas"/>
+            </DockPanel>
+
+        </Grid>
+    </DockPanel>
+
+</Window>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WpfApplication1.Views.RectangleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApplication1.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaivor="clr-namespace:WpfApplication1.Beheivors"
+             mc:Ignorable="d" Width="Auto" Height="Auto" Canvas.Left="{Binding Left}" Canvas.Top="{Binding Top}" >
+        <Rectangle Width="{Binding Width}" Height="{Binding Heigth}"  Stroke="Black" >
+        <Rectangle.Fill>
+            <SolidColorBrush Color="{Binding ForegroundColor}"></SolidColorBrush>
+        </Rectangle.Fill>
+    </Rectangle>
+    <i:Interaction.Behaviors>
+        <behaivor:DragBeheivor mainCanvas="{Binding ma}"/>
+    </i:Interaction.Behaviors>
+</UserControl>
