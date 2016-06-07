@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
+        xmlns:views="clr-namespace:WpfApplication1.Views"
+        xmlns:viewmodels="clr-namespace:WpfApplication1.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="463.32" Width="621.107">
-        <DockPanel>
+    <Window.DataContext>
+        <viewmodels:MainModelView />
+    </Window.DataContext>
+            <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" />
@@ -74,7 +79,19 @@
                     </Button>
                     <local:ScrollableToolBox x:Name="shapesBar" Grid.Column="1" Margin="5,0,0,0"></local:ScrollableToolBox>
                 </Grid>
-                <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="mainCanvas"/>
+                <ItemsControl ItemsSource="{Binding Shapes}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                            <Canvas />
+                            </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="x:Type viewmodels:RectangleViewModel">
+                            <views:RectangleView />
+                        </DataTemplate>
+                     </ItemsControl.ItemTemplate>
+                 </ItemsControl>
+                          <!-- <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" /> -->
             </DockPanel>
 
         </Grid>

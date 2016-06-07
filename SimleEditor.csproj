@@ -83,6 +83,7 @@
     <Compile Include="ScrollableToolBox.xaml.cs">
       <DependentUpon>ScrollableToolBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MainModelView.cs" />
     <Compile Include="ViewModels\ShapeViewModel.cs" />
     <Compile Include="ViewModels\RectangleViewModel.cs" />
     <Compile Include="Views\RectangleView.xaml.cs">

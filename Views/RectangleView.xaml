@@ -13,6 +13,6 @@
         </Rectangle.Fill>
     </Rectangle>
     <i:Interaction.Behaviors>
-        <behaivor:DragBeheivor mainCanvas="{Binding ma}"/>
+        <behaivor:DragBeheivor/>
     </i:Interaction.Behaviors>
 </UserControl>
