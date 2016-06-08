@@ -4,50 +4,50 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 using System.Windows.Media;
+using WpfApplication1.ViewModels;
 
 namespace WpfApplication1.Beheivors
 {
     public class DragBeheivor: Behavior<UserControl>
     {
-
-        private Nullable<Point> dragStart = null;
-        private MouseButtonEventHandler mouseDown;
-        private MouseButtonEventHandler mouseUp;
-        private MouseEventHandler mouseMove;
+        bool isMouseClicked;
+//        private Nullable<Point> dragStart = null;
+        private MouseButtonEventHandler mouseLeftButtonDown;
+        private MouseButtonEventHandler mouseLeftButtonUp;
+        private MouseEventHandler mouseLeave;
         private Action<UIElement> enableDrag;
 
         public DragBeheivor()
         {
-            mouseDown = (sender, args) => {
-                var element = (UIElement)sender;
-                dragStart = args.GetPosition(element);
-                element.CaptureMouse();
+            Window _parent = Application.Current.MainWindow;
+            mouseLeftButtonDown = (sender, args) => {
+                isMouseClicked = true; 
             };
-            mouseUp = (sender, args) => {
-                var element = (UIElement)sender;
-                dragStart = null;
-                element.ReleaseMouseCapture();
+            mouseLeftButtonUp = (sender, args) => {
+                isMouseClicked = false;
             };
-            mouseMove = (sender, args) => {
-                if (dragStart != null && args.LeftButton == MouseButtonState.Pressed)
+            mouseLeave = (sender, args) => {
+                if (isMouseClicked)
                 {
-                    var element = (UIElement)sender;
-
-                    var p2 = args.GetPosition(mainCanvas);
-                    Canvas.SetLeft(element, p2.X - dragStart.Value.X);
-                    Canvas.SetTop(element, p2.Y - dragStart.Value.Y);
+                    DataObject data = new DataObject();
+                    data.SetData(typeof(ShapeViewModel),this.AssociatedObject.DataContext);
+                    DragDrop.DoDragDrop(this.AssociatedObject,
+                            data,
+                            DragDropEffects.Move);
                 }
+                isMouseClicked = false;
             };
             enableDrag = (element) => {
-                element.MouseDown += mouseDown;
-                element.MouseMove += mouseMove;
-                element.MouseUp += mouseUp;
+                element.MouseLeftButtonDown += mouseLeftButtonDown;
+                element.MouseLeave += mouseLeave;
+                element.MouseLeftButtonUp += mouseLeftButtonUp;
             };
 
         }
 
         protected override void OnAttached()
         {
+            base.OnAttached();
             this.enableDrag(AssociatedObject);
         }
 

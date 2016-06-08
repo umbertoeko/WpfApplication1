@@ -20,12 +20,6 @@ namespace WpfApplication1.Views
 {
     public partial class RectangleView : UserControl
     {
-        Canvas _canvas;
-        public Canvas mainCanvas
-        {
-            get { return _canvas; }
-            set { this._canvas = value; }
-        }
         public RectangleView()
         {
             RectangleViewModel rect = new RectangleViewModel(new RectangleModel());

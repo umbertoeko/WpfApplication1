@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApplication1.Views"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaivor="clr-namespace:WpfApplication1.Beheivors"
-             mc:Ignorable="d" Width="Auto" Height="Auto" Canvas.Left="{Binding Left}" Canvas.Top="{Binding Top}" >
+             mc:Ignorable="d" Width="Auto" Height="Auto">
         <Rectangle Width="{Binding Width}" Height="{Binding Heigth}"  Stroke="Black" >
         <Rectangle.Fill>
             <SolidColorBrush Color="{Binding ForegroundColor}"></SolidColorBrush>

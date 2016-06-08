@@ -61,7 +61,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Beheivors\UserControlCustomProperty.cs" />
     <Compile Include="Beheivors\DragBeheivor.cs" />
     <Compile Include="ImageBox.cs" />
     <Compile Include="Models\RectangleModel.cs" />

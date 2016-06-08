@@ -90,7 +90,19 @@
                             <views:RectangleView />
                         </DataTemplate>
                      </ItemsControl.ItemTemplate>
-                 </ItemsControl>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter
+                        Property="Canvas.Left"
+                        Value="{Binding Left}"
+                        />
+                            <Setter
+                        Property="Canvas.Top"
+                        Value="{Binding Top}"
+                        />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
                           <!-- <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" /> -->
             </DockPanel>
 
