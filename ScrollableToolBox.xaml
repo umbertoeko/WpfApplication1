@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApplication1"
+             xmlns:view="clr-namespace:WpfApplication1.ViewModels"
              mc:Ignorable="d" Height="Auto" Width="Auto">
   
      <Grid>
@@ -14,7 +15,31 @@
         </Grid.ColumnDefinitions>
         <Button Name="scrollLeft" Grid.Column="0" Content="&lt;" Click="scrollLeft_Click" ></Button>
             <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Grid.Column="1" Name="myScrollableArea" CanContentScroll="True">
-                <StackPanel Orientation="Horizontal" Name="myToolBox" ></StackPanel>
+                <ItemsControl ItemsSource="{Binding}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                        <StackPanel  Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                        <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window},  Path=DataContext.SelectShape}" CommandParameter="{Binding}">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Name}"/>
+                            <Image Source="Resources/cross.png" Stretch="None">
+                                    <Image.InputBindings>
+                                        <MouseBinding 
+                                            MouseAction="LeftClick" 
+                                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window},  Path=DataContext.DeleteShape}"
+                                            CommandParameter="{Binding}">
+                                        </MouseBinding>
+                                    </Image.InputBindings>
+                            </Image>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
             </ScrollViewer>
             <Button Name="scrollRight" Grid.Column="2" Content="&gt;" Click="scrollRight_Click"></Button>
      </Grid>

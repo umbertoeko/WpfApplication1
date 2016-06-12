@@ -8,16 +8,15 @@ using System.Windows.Media;
 
 namespace WpfApplication1.Models
 {
-    public class RectangleModel: ShapeModel
+    public class EllipseModel: ShapeModel
     {
         public double _width;
         public double _height;
 
-        public RectangleModel(string name) : base()
+        public EllipseModel(string name) : base()
         {
-
             Random rand = new Random();
-            this._height = rand.Next(50,200);
+            this._height = rand.Next(50, 200);
             this._width = rand.Next(50, 200);
             this.Name = name;
         }

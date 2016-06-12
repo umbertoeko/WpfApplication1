@@ -11,7 +11,7 @@
     <Window.DataContext>
         <viewmodels:MainModelView />
     </Window.DataContext>
-            <DockPanel>
+    <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" />
@@ -28,40 +28,47 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <StackPanel  HorizontalAlignment="Stretch" Grid.Column="0">
-                <Button Click="DrawShape"  Tag="0">
+                <Button Command="{Binding AddEllipse}">
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Image Source="Resources/layer-shape-ellipse.png"  Grid.Column="0" Stretch="None"></Image>
-                        <Label  Grid.Column="1">Circle</Label>
+                        <Label  Grid.Column="1">Ellipse</Label>
                     </Grid>
                 </Button>
-                <Button Click="DrawShape"  Tag="1">
+                <Button Command="{Binding AddRectangle}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources/layer-shape.png" Stretch="None"></Image>
                         <Label Margin="10,0,0,0">Rectangle</Label>
                     </StackPanel>
-                    </Button>
-                <Button Click="DrawShape"  Tag="2">
+                </Button>
+                <Button Click="DrawShape"  Tag="2" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources/layer-shape-triangle.png"></Image>
                         <Label Margin="10,0,0,0">Triangle</Label>
                     </StackPanel>
                 </Button>
-                <Button Click="DrawShape"  Tag="3">
+                <Button Click="DrawShape"  Tag="3" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources/layer-shape-text.png"></Image>
                         <Label Margin="10,0,0,0">Text</Label>
                     </StackPanel>
                 </Button>
-                <Button Click="DrawShape"  Tag="4">
+                <Button Click="DrawShape"  Tag="4" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources/image.png"></Image>
                         <Label Margin="10,0,0,0">Image</Label>
                     </StackPanel>
                 </Button>
+            <ContentControl Content ="{Binding SelectedItem,Mode=TwoWay}" DataContext="{Binding}" Height="Auto" Width="Auto" Margin="4 10 4 0">
+                    <ContentControl.Resources>
+                        <DataTemplate DataType="{x:Type viewmodels:RectangleViewModel}">
+                            <views:RectanglePropertyView DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ContentControl.Resources>
+            </ContentControl>
             </StackPanel>
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
             <DockPanel  Grid.Column="2">
@@ -70,26 +77,29 @@
                         <ColumnDefinition Width="90"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Click="ClearCanvas" Grid.Column="0">
+                    <Button Command="{Binding ClearAll}" Grid.Column="0">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Resources/eraser.png" Stretch="None"></Image>
                             <Label Margin="2,0,0,0">ClearAll</Label>
 
                         </StackPanel>
                     </Button>
-                    <local:ScrollableToolBox x:Name="shapesBar" Grid.Column="1" Margin="5,0,0,0"></local:ScrollableToolBox>
+                    <local:ScrollableToolBox x:Name="shapesBar" Grid.Column="1" Margin="5,0,0,0" DataContext="{Binding Shapes}"></local:ScrollableToolBox>
                 </Grid>
                 <ItemsControl ItemsSource="{Binding Shapes}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
                             <Canvas />
-                            </ItemsPanelTemplate>
+                        </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate DataType="x:Type viewmodels:RectangleViewModel">
-                            <views:RectangleView />
+                    <ItemsControl.Resources>
+                        <DataTemplate DataType="{x:Type viewmodels:RectangleViewModel}">
+                            <views:RectangleView DataContext="{Binding}"/>
                         </DataTemplate>
-                     </ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type viewmodels:EllipseViewModel}">
+                            <views:EllipseView DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.Resources>
                     <ItemsControl.ItemContainerStyle>
                         <Style>
                             <Setter
@@ -103,7 +113,7 @@
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
-                          <!-- <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" /> -->
+                <!-- <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" /> -->
             </DockPanel>
 
         </Grid>

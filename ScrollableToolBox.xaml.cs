@@ -25,21 +25,6 @@ namespace WpfApplication1
             InitializeComponent();
         }
 
-        public int Add(UIElement element)
-        {
-            return this.myToolBox.Children.Add(element);
-        }
-
-        public void Remove(UIElement element)
-        {
-            this.myToolBox.Children.Remove(element);
-        }
-
-        public void Clear()
-        {
-            this.myToolBox.Children.Clear();
-        }
-
         private void scrollLeft_Click(object sender, RoutedEventArgs e)
         {
             myScrollableArea.LineLeft();

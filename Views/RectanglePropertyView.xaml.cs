@@ -15,14 +15,17 @@ using System.Windows.Shapes;
 using WpfApplication1.Models;
 using WpfApplication1.ViewModels;
 
-
 namespace WpfApplication1.Views
 {
-    public partial class RectangleView : UserControl
+    /// <summary>
+    /// Interaction logic for UserControl1.xaml
+    /// </summary>
+    public partial class RectanglePropertyView : UserControl
     {
-        public RectangleView()
+        public RectanglePropertyView()
         {
             InitializeComponent();
         }
+        
     }
 }

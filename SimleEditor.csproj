@@ -62,7 +62,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Beheivors\DragBeheivor.cs" />
+    <Compile Include="Commands\addShapeCommand.cs" />
+    <Compile Include="Commands\manipulateShapeCommand.cs" />
+    <Compile Include="Converters\TextToColorConverter.cs" />
     <Compile Include="ImageBox.cs" />
+    <Compile Include="Models\EllipseModel.cs" />
     <Compile Include="Models\RectangleModel.cs" />
     <Compile Include="Models\ShapeModel.cs" />
     <Compile Include="MyAdorner.cs" />
@@ -76,17 +80,21 @@
     <Compile Include="Ellipse.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="Triangle.cs" />
-    <Compile Include="shapeButton.xaml.cs">
-      <DependentUpon>shapeButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ScrollableToolBox.xaml.cs">
       <DependentUpon>ScrollableToolBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainModelView.cs" />
+    <Compile Include="ViewModels\EllipseViewModel .cs" />
     <Compile Include="ViewModels\ShapeViewModel.cs" />
     <Compile Include="ViewModels\RectangleViewModel.cs" />
+    <Compile Include="Views\EllipseView .xaml.cs">
+      <DependentUpon>EllipseView .xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RectangleView.xaml.cs">
       <DependentUpon>RectangleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RectanglePropertyView.xaml.cs">
+      <DependentUpon>RectanglePropertyView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,10 +108,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="shapeButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ScrollableToolBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,7 +116,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\EllipseView .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\RectangleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RectanglePropertyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

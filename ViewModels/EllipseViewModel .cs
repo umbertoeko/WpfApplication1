@@ -7,11 +7,11 @@ using WpfApplication1.Models;
 
 namespace WpfApplication1.ViewModels
 {
-    public class RectangleViewModel:ShapeViewModel 
+    public class EllipseViewModel:ShapeViewModel 
     {
-        protected new RectangleModel model { get { return (RectangleModel)base.model; } }
+        protected new EllipseModel model { get { return (EllipseModel)base.model; } }
 
-        public RectangleViewModel(RectangleModel model): base(model)
+        public EllipseViewModel(EllipseModel model): base(model)
         {
         }
 

@@ -18,9 +18,9 @@ using WpfApplication1.ViewModels;
 
 namespace WpfApplication1.Views
 {
-    public partial class RectangleView : UserControl
+    public partial class EllipseView : UserControl
     {
-        public RectangleView()
+        public EllipseView()
         {
             InitializeComponent();
         }

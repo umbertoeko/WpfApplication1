@@ -19,9 +19,10 @@ namespace WpfApplication1.Models
 
         public ShapeModel()
         {
-            this._top = 100;
-            this._left = 100;
-            this._foregroundColor = Colors.Red;
+            Random rand = new Random();
+            this._top = rand.Next(150);
+            this._left = rand.Next(150);
+            this._foregroundColor = Colors.Transparent;
         }
 
         public double Top
