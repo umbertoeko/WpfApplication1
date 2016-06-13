@@ -66,6 +66,7 @@
     <Compile Include="Commands\manipulateShapeCommand.cs" />
     <Compile Include="Converters\TextToColorConverter.cs" />
     <Compile Include="ImageBox.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\EllipseModel.cs" />
     <Compile Include="Models\RectangleModel.cs" />
     <Compile Include="Models\ShapeModel.cs" />
@@ -83,12 +84,19 @@
     <Compile Include="ScrollableToolBox.xaml.cs">
       <DependentUpon>ScrollableToolBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\MainModelView.cs" />
     <Compile Include="ViewModels\EllipseViewModel .cs" />
     <Compile Include="ViewModels\ShapeViewModel.cs" />
     <Compile Include="ViewModels\RectangleViewModel.cs" />
+    <Compile Include="Views\ImageView.xaml.cs">
+      <DependentUpon>ImageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EllipseView .xaml.cs">
       <DependentUpon>EllipseView .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ImagePropertyView.xaml.cs">
+      <DependentUpon>ImagePropertyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RectangleView.xaml.cs">
       <DependentUpon>RectangleView.xaml</DependentUpon>
@@ -116,7 +124,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ImageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\EllipseView .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImagePropertyView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

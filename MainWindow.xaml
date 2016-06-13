@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:WpfApplication1.Views"
         xmlns:viewmodels="clr-namespace:WpfApplication1.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="463.32" Width="621.107">
+        Title="MainWindow" Height="500" Width="700">
     <Window.DataContext>
         <viewmodels:MainModelView />
     </Window.DataContext>
@@ -50,13 +50,13 @@
                         <Label Margin="10,0,0,0">Triangle</Label>
                     </StackPanel>
                 </Button>
-                <Button Click="DrawShape"  Tag="3" IsEnabled="False">
+                <Button IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources/layer-shape-text.png"></Image>
                         <Label Margin="10,0,0,0">Text</Label>
                     </StackPanel>
                 </Button>
-                <Button Click="DrawShape"  Tag="4" IsEnabled="False">
+                <Button Command="{Binding AddImage}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Resources/image.png"></Image>
                         <Label Margin="10,0,0,0">Image</Label>
@@ -67,6 +67,10 @@
                         <DataTemplate DataType="{x:Type viewmodels:RectangleViewModel}">
                             <views:RectanglePropertyView DataContext="{Binding}"/>
                         </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewmodels:ImageViewModel}">
+                            <views:ImagePropertyView DataContext="{Binding}"/>
+                        </DataTemplate>
+
                     </ContentControl.Resources>
             </ContentControl>
             </StackPanel>
@@ -89,7 +93,7 @@
                 <ItemsControl ItemsSource="{Binding Shapes}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <Canvas />
+                            <Canvas AllowDrop="True"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.Resources>
@@ -98,6 +102,9 @@
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type viewmodels:EllipseViewModel}">
                             <views:EllipseView DataContext="{Binding}"/>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type viewmodels:ImageViewModel}">
+                            <views:ImageView DataContext="{Binding}"/>
                         </DataTemplate>
                     </ItemsControl.Resources>
                     <ItemsControl.ItemContainerStyle>

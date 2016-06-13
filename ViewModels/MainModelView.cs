@@ -18,6 +18,8 @@ namespace WpfApplication1.ViewModels
         private ShapeViewModel _selected;
         private ICommand _addRectangle;
         private ICommand _addEllipse;
+        private ICommand _addImage;
+
         private ICommand _clearAll;
         private ICommand _deleteShape;
         private ICommand _selectShape;
@@ -94,6 +96,21 @@ namespace WpfApplication1.ViewModels
                 {
                     itemsCount++;
                     _shapes.Add(new RectangleViewModel(new RectangleModel("Shape_"+ itemsCount)));
+                    _selected = _shapes.Last();
+                    OnPropertyChanged("SelectedItem");
+                    OnPropertyChanged("Shapes");
+                }));
+            }
+        }
+
+        public ICommand AddImage
+        {
+            get
+            {
+                return _addImage ?? (_addImage = new addShapeCommand(() =>
+                {
+                    itemsCount++;
+                    _shapes.Add(new ImageViewModel(new ImageModel("Shape_" + itemsCount)));
                     _selected = _shapes.Last();
                     OnPropertyChanged("SelectedItem");
                     OnPropertyChanged("Shapes");
