@@ -29,6 +29,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <Border Background="DarkGray" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
             <Label.FontWeight>Bold</Label.FontWeight>
             Property: Rectangle

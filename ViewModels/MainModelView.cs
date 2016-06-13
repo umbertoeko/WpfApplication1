@@ -95,7 +95,7 @@ namespace WpfApplication1.ViewModels
                 return _addRectangle ?? (_addRectangle = new addShapeCommand(() => 
                 {
                     itemsCount++;
-                    _shapes.Add(new RectangleViewModel(new RectangleModel("Shape_"+ itemsCount)));
+                    _shapes.Add(new RectangleViewModel(new RectangleModel(this.getNextName())));
                     _selected = _shapes.Last();
                     OnPropertyChanged("SelectedItem");
                     OnPropertyChanged("Shapes");
@@ -110,7 +110,7 @@ namespace WpfApplication1.ViewModels
                 return _addImage ?? (_addImage = new addShapeCommand(() =>
                 {
                     itemsCount++;
-                    _shapes.Add(new ImageViewModel(new ImageModel("Shape_" + itemsCount)));
+                    _shapes.Add(new ImageViewModel(new ImageModel(this.getNextName())));
                     _selected = _shapes.Last();
                     OnPropertyChanged("SelectedItem");
                     OnPropertyChanged("Shapes");
@@ -125,7 +125,7 @@ namespace WpfApplication1.ViewModels
                 return _addEllipse ?? (_addEllipse = new addShapeCommand(() => 
                 {
                     itemsCount++;
-                    _shapes.Add(new EllipseViewModel(new EllipseModel("Shape_" + itemsCount)));
+                    _shapes.Add(new EllipseViewModel(new EllipseModel(this.getNextName())));
                     _selected = null;
                     OnPropertyChanged("SelectedItem");
                     OnPropertyChanged("Shapes");
@@ -133,6 +133,10 @@ namespace WpfApplication1.ViewModels
             }
         }
 
+        private String getNextName()
+        {
+            return "Shape" + itemsCount;
+        }
         public MainModelView()
         {
             _selected = null; 
